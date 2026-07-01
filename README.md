@@ -1,4 +1,4 @@
-### Sistema de gestion de veterinaria
+### Sistema de gestión de veterinaria
 
 --Trabajo Integrador Python--
 Algoritmos y estructuras de datos (2026) - UTN FRRe
