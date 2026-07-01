@@ -18,4 +18,6 @@ Link:
 ## Instrucciones de ejecución
 
 ## Uso de IA
-Se uso chatgpt para generar ideas para estructura del programa (menu principal), y para contestar dudas en el tema del uso de archivos.txt, tambien se utilizo claude para guiarnos con la implementacion de funciones en el codigo inicial.
+Se uso chatgpt para generar ideas para la estructura del programa (menu principal), y para contestar dudas en el tema del uso de archivos .txt, tambien se utilizo claude para guiarnos con la implementacion de funciones en el codigo inicial.
+
+Codigo Fuente:
