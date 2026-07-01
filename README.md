@@ -10,7 +10,7 @@ Integrantes:
 - Jeremias Adan Fontana
 
 ## Descripcion Breve
-El sistema funciona como un oper
+El sistema funciona como un operador para una veterinaria, en el cual se pueden registrar turnos para sus mascotas, historial de atenciones realizadas, etc. El sistema implementa una solucion para veterinarias que necesiten orden en sus registros de turnos, mascotas, etc.
 
 ## Video demo del programa
 Link: 
