@@ -1,15 +1,18 @@
---Sistema de gestion de veterinaria--
+### Sistema de gestion de veterinaria
+
 --Trabajo Integrador Python--
 Algoritmos y estructuras de datos (2026) - UTN FRRe
 Comision k1.2
--Grupo: B44-
+Grupo B 44
 Integrantes:
-- Kuray pablo
+- Kuray Pablo
 - Vilaqui Tobias
 - Jeremias Adan Fontana
 
-- Descripcion del Programa:
+## Descripcion Breve
+aca va la descripcion
 
-- Video de la demo del programa:
+## Video demo del programa
+Link: 
 
--Instruciones de ejecucion:
+## Instrucciones de ejecución
