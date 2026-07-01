@@ -10,7 +10,7 @@ Integrantes:
 - Jeremias Adan Fontana
 
 ## Descripcion Breve
-aca va la descripcion
+El sistema funciona como un oper
 
 ## Video demo del programa
 Link: 
