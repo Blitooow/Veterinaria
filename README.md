@@ -22,30 +22,33 @@ Link:
 Python vet.py
 
 ## Uso de IA
-Se uso chatgpt para generar ideas para la estructura del programa (menu principal), y para contestar dudas en el tema del uso de archivos .txt, tambien se utilizo claude para guiarnos con la implementacion de funciones en la estructura principal del codigo inicial. ChatGPT nos recomendo el uso de la funcion .isdigit() para que el dato de la edad sea obligatoriamente numerico. Claude tambien nos ayudo a ordenar el codigo final.
+Se uso chatgpt para generar ideas para la estructura del programa (menu principal), y para contestar dudas en el tema del uso de archivos .txt, tambien se utilizo claude para guiarnos con la implementacion de funciones en la estructura principal del codigo inicial. ChatGPT nos recomendo el uso de la funcion .isdigit() para que el dato de la edad sea obligatoriamente numerico y tambien ayudo con las validaciones y excepciones, recomendo el uso de try except FileNotFoundError. Claude tambien nos ayudo a ordenar el codigo final.
 
 ## Codigo Fuente:
 ```python
 #se definen todas las opciones en funciones
 #en esta parte se registran las macotas y se leen
 def registrar_mascota():
-    with open("mascotas_registradas.txt", "a") as archivoM:
-        nombre = input("Nombre de su mascota: ")
-        especie = input("Especie (Perro, Gato, etc): ")
+    nombre = input("Nombre de su mascota: ")
+    especie = input("Especie (Perro, Gato, etc): ")
+    edad = input("Edad de su mascota: ")
+    while edad.isdigit() == False:
+        print("La edad debe ser un numero, intente nuevamente")
         edad = input("Edad de su mascota: ")
+    with open("mascotas_registradas.txt", "a") as archivoM:
         archivoM.write(nombre + ";" + especie + ";" + edad + "\n")
-        print("Mascota registrada correctamente")
-        while edad.isdigit() == False:
-            print("La edad debe ser un numero, intente nuevamente")
-            edad = input("Edad de su mascota: ")
+    print("Su mascota fue registrada")
 def ver_mascotas():
-    with open("mascotas_registradas.txt", "r") as archivoM:
-        print("\n--Mascotas Registradas--")
-        for linea in archivoM:
-            datos = linea.split(";")
-            print("Nombre de la mascota:", datos[0])
-            print("Especie:", datos[1])
-            print("Edad de la mascota:", datos[2])
+    try:
+        with open("mascotas_registradas.txt", "r") as archivoM:
+            print("\n--Mascotas Registradas--")
+            for linea in archivoM:
+                datos = linea.split(";")
+                print("Nombre de la mascota:", datos[0])
+                print("Especie:", datos[1])
+                print("Edad de la mascota:", datos[2])
+    except FileNotFoundError:
+        print("No hay mascotas registradas en el sistema")
 
 #en esta parte se registran los turnos y se leen
 def registrar_turno():
@@ -55,12 +58,15 @@ def registrar_turno():
         archivoT.write(nombre + ";" + fecha + "\n")
         print("Turno registrado correctamente")
 def ver_turnos():
-    with open("turnos_registrados.txt", "r") as archivoT:
-        print("\n--Turnos Registrados--")
-        for linea in archivoT:
-            datos = linea.split(";")
-            print("Mascota:", datos[0])
-            print("Fecha:", datos[1])
+    try:
+        with open("turnos_registrados.txt", "r") as archivoT:
+            print("\n--Turnos Registrados--")
+            for linea in archivoT:
+                datos = linea.split(";")
+                print("Mascota:", datos[0])
+                print("Fecha:", datos[1])
+    except FileNotFoundError:
+        print("No hay turnos registrados en el sistema")
 
 #aca se registran las atenciones realizadas por el veterinario y se ven las estadisticas
 def registrar_atencion():
@@ -70,44 +76,53 @@ def registrar_atencion():
         archivoA.write(nombre + ";" + servicio + "\n")
         print("Atención registrada correctamente")
 def ver_estadisticas():
-    with open("atenciones_registradas.txt", "r") as archivoA:
-        consultas = 0
-        vacunas = 0
-        otro = 0
-        for linea in archivoA:
-            datos = linea.split(";")
-            if datos[1].strip() == "Consulta":
-                consultas = consultas + 1
-            elif datos[1].strip() == "Vacuna":
-                vacunas = vacunas + 1
-            else:
-                otro = otro + 1
-    print("\n--Estadisticas--")
-    print("Consultas:", consultas)
-    print("Vacunas:", vacunas)
-    print("Otros:", otro)
+    try:
+        with open("atenciones_registradas.txt", "r") as archivoA:
+            consultas = 0
+            vacunas = 0
+            otro = 0
+            for linea in archivoA:
+                datos = linea.split(";")
+                if datos[1].strip() == "Consulta":
+                    consultas = consultas + 1
+                elif datos[1].strip() == "Vacuna":
+                    vacunas = vacunas + 1
+                else:
+                    otro = otro + 1
+        print("\n--Estadisticas--")
+        print("Consultas:", consultas)
+        print("Vacunas:", vacunas)
+        print("Otros:", otro)
+    except FileNotFoundError:
+        print("No hay estadisticas registradas en el sistema")
 
 #parte en la que se pueden buscar mascotas y contar cuantas hay
 def buscar_mascota():
-    with open("mascotas_registradas.txt", "r") as archivoM:
-        nombre = input("Ingrese el nombre de la mascota que busca: ")
-        encontrada = False
-        for linea in archivoM:
-            datos = linea.split(";")
-            if datos[0] == nombre:
-                print("\nMascota encontrada")
-                print("Nombre de la mascota: ", datos[0])
-                print("Especie: ", datos[1])
-                print("Edad: ", datos[2])
-                encontrada = True
-        if encontrada == False:
-            print("La mascota no esta registrada")
+    try:
+        with open("mascotas_registradas.txt", "r") as archivoM:
+            nombre = input("Ingrese el nombre de la mascota que busca: ")
+            encontrada = False
+            for linea in archivoM:
+                datos = linea.split(";")
+                if datos[0] == nombre:
+                    print("\nMascota encontrada")
+                    print("Nombre de la mascota: ", datos[0])
+                    print("Especie: ", datos[1])
+                    print("Edad: ", datos[2])
+                    encontrada = True
+            if encontrada == False:
+                print("La mascota no esta registrada")
+    except FileNotFoundError:
+        print("No hay mascotas registradas en el sistema")
 def cantidad_mascotas():
-    with open("mascotas_registradas.txt", "r") as archivoM:
-        contador = 0
-        for linea in archivoM:
-            contador = contador + 1
-        print("Hay", contador, "mascotas registradas en el sistema")
+    try:
+        with open("mascotas_registradas.txt", "r") as archivoM:
+            contador = 0
+            for linea in archivoM:
+                contador = contador + 1
+            print("Hay", contador, "mascotas registradas en el sistema")
+    except FileNotFoundError:
+        print("No hay mascotas registradas en el sistema")
 
 #menu principal del sistema
 def mostrar_menu():
@@ -124,7 +139,11 @@ def menu_principal():
     opcion = 0
     while opcion != 9:
         mostrar_menu()
-        opcion = int(input("Elija una opción: "))
+        try:
+            opcion = int(input("Elija una opción: "))
+        except ValueError:
+            print("Debe ingresar un numero, intente nuevamente")
+            opcion = 0
         if opcion == 1:
             registrar_mascota()
         elif opcion == 2:
