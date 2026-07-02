@@ -33,7 +33,7 @@ def ver_turnos():
 def registrar_atencion():
     a = open("atenciones.txt", "a")
     nombre = input("Mascota: ")
-    servicio = input("Servicio: ")
+    servicio = input("Servicio Realizado: ")
     a.write(nombre + ";" + servicio + "\n")
     a.close()
     print("Atención registrada correctamente")
@@ -56,14 +56,14 @@ def ver_estadisticas():
     print("Otros:", o)
     a.close()
 def mostrar_menu():
-    print("\n1 Registrar mascota")
+    print("\n1-Registrar mascota")
     print("2-Ver mascotas registradas")
     print("3-Registrar turno")
     print("4-Ver turnos")
     print("5-Registrar atención realizada")
     print("6-Ver estadisticas")
     print("7-Salir")
-def main():
+def menu_principal():
     opcion = 0
     while opcion != 7:
         mostrar_menu()
@@ -85,4 +85,4 @@ def main():
             print("Gracias por utilizar el sistema")
         else:
             print("Opcion incorrecta, intente nuevamente")
-main()
+menu_principal()
