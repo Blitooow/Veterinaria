@@ -9,7 +9,7 @@ def registrar_mascota():
         edad = input("Edad de su mascota: ")
     with open("mascotas_registradas.txt", "a") as archivoM:
         archivoM.write(nombre + ";" + especie + ";" + edad + "\n")
-    print("Mascota registrada correctamente")
+    print("Su mascota fue registrada")
 def ver_mascotas():
     with open("mascotas_registradas.txt", "r") as archivoM:
         print("\n--Mascotas Registradas--")
@@ -96,7 +96,11 @@ def menu_principal():
     opcion = 0
     while opcion != 9:
         mostrar_menu()
-        opcion = int(input("Elija una opción: "))
+        try:
+            opcion = int(input("Elija una opción: "))
+        except ValueError:
+            print("Debe ingresar un numero, intente nuevamente")
+            opcion = 0
         if opcion == 1:
             registrar_mascota()
         elif opcion == 2:
