@@ -10,12 +10,17 @@ Integrantes:
 - Fontana Jeremias Adan
 
 ## Descripcion Breve
-El sistema funciona como un operador para una veterinaria, en el cual se pueden registrar turnos para sus mascotas, historial de atenciones realizadas, etc. El sistema implementa una solucion para veterinarias que necesiten orden en sus registros de turnos, mascotas, etc.
+El sistema funciona como un operador para una veterinaria, en el cual se pueden registrar turnos para sus mascotas, historial de atenciones realizadas, etc. El sistema implementa una solucion para veterinarias que necesiten orden en sus registros de turnos, mascotas, etc. El programa funciona mejor para que lo usen los operarios de la veterinaria.
 
 ## Video demo del programa
 Link: 
 
 ## Instrucciones de ejecución
+1. Clonar este repositorio
+2. Abrir la terminal dentro de la carpeta
+3. Ejecutar el programa con el comando:
+```bash
+Python vet.py
 
 ## Uso de IA
 Se uso chatgpt para generar ideas para la estructura del programa (menu principal), y para contestar dudas en el tema del uso de archivos .txt, tambien se utilizo claude para guiarnos con la implementacion de funciones en el codigo inicial.
