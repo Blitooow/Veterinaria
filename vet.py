@@ -1,94 +1,93 @@
 #se definen todas las opciones en funciones
 #en esta parte se registran las macotas y se leen
 def registrar_mascota():
-    archivo = open("mascotas_registradas.txt", "a")
-    nombre = input("Nombre de su mascota: ")
-    especie = input("Especie (Perro, Gato, etc): ")
-    edad = input("Edad de su mascota: ")
-    archivo.write(nombre + ";" + especie + ";" + edad + "\n")
-    archivo.close()
-    print("Mascota registrada correctamente")
+    with open("mascotas_registradas.txt", "a") as archivo:
+        nombre = input("Nombre de su mascota: ")
+        especie = input("Especie (Perro, Gato, etc): ")
+        edad = input("Edad de su mascota: ")
+        archivo.write(nombre + ";" + especie + ";" + edad + "\n")
+        print("Mascota registrada correctamente")
+        while edad.isdigit() == False:
+            print("La edad debe ser un numero, intente nuevamente")
+            edad = input("Edad de su mascota: ")
 def ver_mascotas():
-    archivo = open("mascotas_registradas.txt", "r")
-    print("\nMascotas Registradas")
-    for x in a:
-        d = x.split(";")
-        print("Nombre de la mascota:", d[0])
-        print("Especie:", d[1])
-        print("Edad de la mascota:", d[2])
-    archivo.close()
+    with open("mascotas_registradas.txt", "r") as archivo:
+        print("\n--Mascotas Registradas--")
+        for leer in archivo:
+            datos = leer.split(";")
+            print("Nombre de la mascota:", datos[0])
+            print("Especie:", datos[1])
+            print("Edad de la mascota:", datos[2])
+
 #en esta parte se registran los turnos y se leen
 def registrar_turno():
-    archivo = open("turnos_registrados.txt", "a")
-    nombre = input("Mascota: ")
-    fecha = input("Fecha: ")
-    archivo.write(nombre + ";" + fecha + "\n")
-    archivo.close()
-    print("Turno registrado correctamente")
+    with open("turnos_registrados.txt", "a") as archivo:
+        nombre = input("Mascota: ")
+        fecha = input("Fecha: ")
+        archivo.write(nombre + ";" + fecha + "\n")
+        print("Turno registrado correctamente")
 def ver_turnos():
-    archivo = open("turnos_registrados.txt", "r")
-    print("\nTurnos Registrados")
-    for x in archivo:
-        d = x.split(";")
-        print("Mascota:", d[0])
-        print("Fecha:", d[1])
-    archivo.close()
+    with open("turnos_registrados.txt", "r") as archivo:
+        print("\n--Turnos Registrados--")
+        for leer in archivo:
+            datos = leer.split(";")
+            print("Mascota:", datos[0])
+            print("Fecha:", datos[1])
+
 #aca se registran las atenciones realizadas por el veterinario y se ven las estadisticas
 def registrar_atencion():
-    archivo = open("atenciones_registradas.txt", "a")
-    nombre = input("Mascota: ")
-    servicio = input("Servicio Realizado: ")
-    archivo.write(nombre + ";" + servicio + "\n")
-    archivo.close()
-    print("Atención registrada correctamente")
+    with open("atenciones_registradas.txt", "a") as archivo:
+        nombre = input("Mascota: ")
+        servicio = input("Servicio Realizado (Vacuna, Consulta, Otro): ")
+        archivo.write(nombre + ";" + servicio + "\n")
+        print("Atención registrada correctamente")
 def ver_estadisticas():
-    archivo = open("atenciones_registradas.txt", "r")
-    c = 0
-    v = 0
-    o = 0
-    for x in archivo:
-        d = x.split(";")
-        if d[1].strip() == "Consulta":
-            c = c + 1
-        elif d[1].strip() == "Vacuna":
-            v = v + 1
-        else:
-            o = o + 1
-    print("\nEstadisticas")
-    print("Consultas:", c)
-    print("Vacunas:", v)
-    print("Otros:", o)
-    archivo.close()
+    with open("atenciones_registradas.txt", "r") as archivo:
+        consultas = 0
+        vacunas = 0
+        otro = 0
+        for leer in archivo:
+            datos = leer.split(";")
+            if datos[1].strip() == "Consulta":
+                consultas = consultas + 1
+            elif datos[1].strip() == "Vacuna":
+                vacunas = vacunas + 1
+            else:
+                otro = otro + 1
+    print("\n--Estadisticas--")
+    print("Consultas:", consultas)
+    print("Vacunas:", vacunas)
+    print("Otros:", otro)
+
 #parte en la que se pueden buscar mascotas y contar cuantas hay
 def buscar_mascota():
-    archivo = open("mascotas_registradas.txt", "r")
-    nombre = input("Ingrese el nombre de la mascota que busca: ")
-    encontrada = False
-    for x in archcivo:
-        datos = x.split(";")
-        if datos[0] == nombre:
-            print("\nMascota encontrada")
-            print("Nombre de la mascota: ", datos[0])
-            print("Especie: ", datos[1])
-            print("Edad: ", datos[2])
-            encontrada = True
-    if encontrada == False:
-        print("La mascota no esta registrada")
-    archivo.close()
+    with open("mascotas_registradas.txt", "r") as archivo:
+        nombre = input("Ingrese el nombre de la mascota que busca: ")
+        encontrada = False
+        for leer in archivo:
+            datos = leer.split(";")
+            if datos[0] == nombre:
+                print("\nMascota encontrada")
+                print("Nombre de la mascota: ", datos[0])
+                print("Especie: ", datos[1])
+                print("Edad: ", datos[2])
+                encontrada = True
+        if encontrada == False:
+            print("La mascota no esta registrada")
 def cantidad_mascotas():
-    archivo = open("mascotas_registradas.txt", "r")
-    contador = 0
-    for x in archivo:
-        contador = contador + 1
-    print("Hay", contador, "mascotas registradas en el sistema")
-    archivo.close()
+    with open("mascotas_registradas.txt", "r") as archivo:
+        contador = 0
+        for leer in archivo:
+            contador = contador + 1
+        print("Hay", contador, "mascotas registradas en el sistema")
+
 #menu principal del sistema
 def mostrar_menu():
     print("\n1-Registrar mascota")
     print("2-Ver mascotas registradas")
     print("3-Registrar turno")
     print("4-Ver turnos")
-    print("5-Registrar atención realizada")
+    print("5-Registrar atención medica realizada")
     print("6-Ver estadisticas")
     print("7-Buscar una mascota registrada: ")
     print("8-Consultar cuantas mascotas hay registradas: ")
@@ -117,5 +116,5 @@ def menu_principal():
         elif opcion == 9:
             print("Gracias por utilizar el sistema")
         else:
-            print("Opcion incorrecta, intente nuevamente")
+            print("Opción incorrecta, intente nuevamente")
 menu_principal()
