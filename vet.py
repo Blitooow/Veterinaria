@@ -1,5 +1,5 @@
 def registrar_mascota():
-    a = open("mascotas.txt", "a")
+    a = open("mascotas_registradas.txt", "a")
     nombre = input("Nombre de su mascota: ")
     especie = input("Especie (Perro, Gato, etc): ")
     edad = input("Edad de su mascota: ")
@@ -7,7 +7,7 @@ def registrar_mascota():
     a.close()
     print("Mascota registrada correctamente")
 def ver_mascotas():
-    a = open("mascotas.txt", "r")
+    a = open("mascotas_registradas.txt", "r")
     print("\nMascotas Registradas")
     for x in a:
         d = x.split(";")
@@ -16,14 +16,14 @@ def ver_mascotas():
         print("Edad de la mascota:", d[2])
     a.close()
 def registrar_turno():
-    a = open("turnos.txt", "a")
+    a = open("turnos_registrados.txt", "a")
     nombre = input("Mascota: ")
     fecha = input("Fecha: ")
     a.write(nombre + ";" + fecha + "\n")
     a.close()
     print("Turno registrado correctamente")
 def ver_turnos():
-    a = open("turnos.txt", "r")
+    a = open("turnos_registrados.txt", "r")
     print("\nTurnos Registrados")
     for x in a:
         d = x.split(";")
@@ -31,14 +31,14 @@ def ver_turnos():
         print("Fecha:", d[1])
     a.close()
 def registrar_atencion():
-    a = open("atenciones.txt", "a")
+    a = open("atenciones_registradas.txt", "a")
     nombre = input("Mascota: ")
     servicio = input("Servicio Realizado: ")
     a.write(nombre + ";" + servicio + "\n")
     a.close()
     print("Atención registrada correctamente")
 def ver_estadisticas():
-    a = open("atenciones.txt", "r")
+    a = open("atenciones_registradas.txt", "r")
     c = 0
     v = 0
     o = 0
@@ -56,7 +56,7 @@ def ver_estadisticas():
     print("Otros:", o)
     a.close()
 def buscar_mascota():
-    a = open("mascotas.txt", "r")
+    a = open("mascotas_registradas.txt", "r")
     nombre = input("Ingrese el nombre de la mascota que busca: ")
     encontrada = False
     for x in a:
@@ -71,7 +71,7 @@ def buscar_mascota():
         print("La mascota no esta registrada")
     a.close()
 def cantidad_mascotas():
-    a = open("mascotas.txt", "r")
+    a = open("mascotas_registradas.txt", "r")
     contador = 0
     for x in a:
         contador = contador + 1
