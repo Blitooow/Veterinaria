@@ -19,7 +19,6 @@ Link:
 1. Clonar este repositorio
 2. Abrir la terminal dentro de la carpeta
 3. Ejecutar el programa con el comando:
-```bash
 Python vet.py
 
 ## Uso de IA
