@@ -1,3 +1,5 @@
+#se definen todas las opciones en funciones
+#en esta parte se registran las macotas y se leen
 def registrar_mascota():
     a = open("mascotas_registradas.txt", "a")
     nombre = input("Nombre de su mascota: ")
@@ -15,6 +17,7 @@ def ver_mascotas():
         print("Especie:", d[1])
         print("Edad de la mascota:", d[2])
     a.close()
+#en esta parte se registran los turnos y se leen
 def registrar_turno():
     a = open("turnos_registrados.txt", "a")
     nombre = input("Mascota: ")
@@ -30,6 +33,7 @@ def ver_turnos():
         print("Mascota:", d[0])
         print("Fecha:", d[1])
     a.close()
+#aca se registran las atenciones realizadas por el veterinario y se ven las estadisticas
 def registrar_atencion():
     a = open("atenciones_registradas.txt", "a")
     nombre = input("Mascota: ")
@@ -77,6 +81,7 @@ def cantidad_mascotas():
         contador = contador + 1
     print("Hay", contador, "mascotas registradas en el sistema")
     a.close()
+#menu principal del sistema
 def mostrar_menu():
     print("\n1-Registrar mascota")
     print("2-Ver mascotas registradas")
