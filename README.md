@@ -27,7 +27,7 @@ Se uso chatgpt para generar ideas para la estructura del programa (menu principa
 ## Codigo Fuente:
 ```python
 def registrar_mascota():
-    a = open("mascotas.txt", "a")
+    a = open("mascotas_registradas.txt", "a")
     nombre = input("Nombre de su mascota: ")
     especie = input("Especie (Perro, Gato, etc): ")
     edad = input("Edad de su mascota: ")
@@ -35,7 +35,7 @@ def registrar_mascota():
     a.close()
     print("Mascota registrada correctamente")
 def ver_mascotas():
-    a = open("mascotas.txt", "r")
+    a = open("mascotas_registradas.txt", "r")
     print("\nMascotas Registradas")
     for x in a:
         d = x.split(";")
@@ -44,14 +44,14 @@ def ver_mascotas():
         print("Edad de la mascota:", d[2])
     a.close()
 def registrar_turno():
-    a = open("turnos.txt", "a")
+    a = open("turnos_registrados.txt", "a")
     nombre = input("Mascota: ")
     fecha = input("Fecha: ")
     a.write(nombre + ";" + fecha + "\n")
     a.close()
     print("Turno registrado correctamente")
 def ver_turnos():
-    a = open("turnos.txt", "r")
+    a = open("turnos_registrados.txt", "r")
     print("\nTurnos Registrados")
     for x in a:
         d = x.split(";")
@@ -59,14 +59,14 @@ def ver_turnos():
         print("Fecha:", d[1])
     a.close()
 def registrar_atencion():
-    a = open("atenciones.txt", "a")
+    a = open("atenciones_registradas.txt", "a")
     nombre = input("Mascota: ")
-    servicio = input("Servicio: ")
+    servicio = input("Servicio Realizado: ")
     a.write(nombre + ";" + servicio + "\n")
     a.close()
     print("Atención registrada correctamente")
 def ver_estadisticas():
-    a = open("atenciones.txt", "r")
+    a = open("atenciones_registradas.txt", "r")
     c = 0
     v = 0
     o = 0
@@ -83,17 +83,41 @@ def ver_estadisticas():
     print("Vacunas:", v)
     print("Otros:", o)
     a.close()
+def buscar_mascota():
+    a = open("mascotas_registradas.txt", "r")
+    nombre = input("Ingrese el nombre de la mascota que busca: ")
+    encontrada = False
+    for x in a:
+        datos = x.split(";")
+        if datos[0] == nombre:
+            print("\nMascota encontrada")
+            print("Nombre de la mascota: ", datos[0])
+            print("Especie: ", datos[1])
+            print("Edad: ", datos[2])
+            encontrada = True
+    if encontrada == False:
+        print("La mascota no esta registrada")
+    a.close()
+def cantidad_mascotas():
+    a = open("mascotas_registradas.txt", "r")
+    contador = 0
+    for x in a:
+        contador = contador + 1
+    print("Hay", contador, "mascotas registradas en el sistema")
+    a.close()
 def mostrar_menu():
-    print("\n1 Registrar mascota")
+    print("\n1-Registrar mascota")
     print("2-Ver mascotas registradas")
     print("3-Registrar turno")
     print("4-Ver turnos")
     print("5-Registrar atención realizada")
     print("6-Ver estadisticas")
-    print("7-Salir")
-def main():
+    print("7-Buscar una mascota registrada: ")
+    print("8-Consultar cuantas mascotas hay registradas: ")
+    print("9-Salir")
+def menu_principal():
     opcion = 0
-    while opcion != 7:
+    while opcion != 9:
         mostrar_menu()
         opcion = int(input("Elija una opción: "))
 
@@ -110,8 +134,12 @@ def main():
         elif opcion == 6:
             ver_estadisticas()
         elif opcion == 7:
+            buscar_mascota()
+        elif opcion == 8:
+            cantidad_mascotas()
+        elif opcion == 9:
             print("Gracias por utilizar el sistema")
         else:
-            print("Opcion incorrecta, intente nuevamente")
-main()
+            print("Opción incorrecta, intente nuevamente")
+menu_principal()
 ```
