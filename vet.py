@@ -55,6 +55,28 @@ def ver_estadisticas():
     print("Vacunas:", v)
     print("Otros:", o)
     a.close()
+def buscar_mascota():
+    a = open("mascotas.txt", "r")
+    nombre = input("Ingrese el nombre de la mascota que busca: ")
+    encontrada = False
+    for x in a:
+        datos = x.split(";")
+        if datos[0] == nombre:
+            print("\nMascota encontrada")
+            print("Nombre de la mascota: ", datos[0])
+            print("Especie: ", datos[1])
+            print("Edad: ", datos[2])
+            encontrada = True
+    if encontrada == False:
+        print("La mascota no esta registrada")
+    a.close()
+def cantidad_mascotas():
+    a = open("mascotas.txt", "r")
+    contador = 0
+    for x in a:
+        contador = contador + 1
+    print("Hay", contador, "mascotas registradas en el sistema")
+    a.close()
 def mostrar_menu():
     print("\n1-Registrar mascota")
     print("2-Ver mascotas registradas")
@@ -62,10 +84,12 @@ def mostrar_menu():
     print("4-Ver turnos")
     print("5-Registrar atención realizada")
     print("6-Ver estadisticas")
-    print("7-Salir")
+    print("7-Buscar una mascota registrada: ")
+    print("8-Consultar cuantas mascotas hay registradas: ")
+    print("9-Salir")
 def menu_principal():
     opcion = 0
-    while opcion != 7:
+    while opcion != 9:
         mostrar_menu()
         opcion = int(input("Elija una opción: "))
 
@@ -82,6 +106,10 @@ def menu_principal():
         elif opcion == 6:
             ver_estadisticas()
         elif opcion == 7:
+            buscar_mascota()
+        elif opcion == 8:
+            cantidad_mascotas()
+        elif opcion == 9:
             print("Gracias por utilizar el sistema")
         else:
             print("Opcion incorrecta, intente nuevamente")
