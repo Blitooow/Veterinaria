@@ -1,15 +1,15 @@
 #se definen todas las opciones en funciones
 #en esta parte se registran las macotas y se leen
 def registrar_mascota():
-    with open("mascotas_registradas.txt", "a") as archivoM:
-        nombre = input("Nombre de su mascota: ")
-        especie = input("Especie (Perro, Gato, etc): ")
+    nombre = input("Nombre de su mascota: ")
+    especie = input("Especie (Perro, Gato, etc): ")
+    edad = input("Edad de su mascota: ")
+    while edad.isdigit() == False:
+        print("La edad debe ser un numero, intente nuevamente")
         edad = input("Edad de su mascota: ")
+    with open("mascotas_registradas.txt", "a") as archivoM:
         archivoM.write(nombre + ";" + especie + ";" + edad + "\n")
-        print("Mascota registrada correctamente")
-        while edad.isdigit() == False:
-            print("La edad debe ser un numero, intente nuevamente")
-            edad = input("Edad de su mascota: ")
+    print("Mascota registrada correctamente")
 def ver_mascotas():
     with open("mascotas_registradas.txt", "r") as archivoM:
         print("\n--Mascotas Registradas--")
