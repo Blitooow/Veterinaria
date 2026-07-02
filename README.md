@@ -22,7 +22,7 @@ Link:
 Python vet.py
 
 ## Uso de IA
-Se uso chatgpt para generar ideas para la estructura del programa (menu principal), y para contestar dudas en el tema del uso de archivos .txt, tambien se utilizo claude para guiarnos con la implementacion de funciones en la estructura principal del codigo inicial. ChatGPT nos recomendo el uso de la funcion .isdigit() para que el dato de la edad sea obligatoriamente numerico.
+Se uso chatgpt para generar ideas para la estructura del programa (menu principal), y para contestar dudas en el tema del uso de archivos .txt, tambien se utilizo claude para guiarnos con la implementacion de funciones en la estructura principal del codigo inicial. ChatGPT nos recomendo el uso de la funcion .isdigit() para que el dato de la edad sea obligatoriamente numerico. Claude tambien nos ayudo a ordenar el codigo final.
 
 ## Codigo Fuente:
 ```python
