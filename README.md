@@ -72,7 +72,7 @@ def ver_turnos():
 def registrar_atencion():
     with open("atenciones_registradas.txt", "a") as archivoA:
         nombre = input("Mascota: ")
-        servicio = input("Servicio Realizado (Vacuna, Consulta, Otro): ")
+        servicio = input("Servicio Realizado (Vacuna, Consulta, Cirugia, Radiografia, Otro): ")
         archivoA.write(nombre + ";" + servicio + "\n")
         print("Atención registrada correctamente")
 def ver_estadisticas():
@@ -87,11 +87,17 @@ def ver_estadisticas():
                     consultas = consultas + 1
                 elif datos[1].strip() == "Vacuna":
                     vacunas = vacunas + 1
+                if datos[1].strip() == "Cirugia":
+                    cirugias = cirugias + 1
+                elif datos[1].strip() == "Radiografia":
+                    radiografias = radiografias + 1
                 else:
                     otro = otro + 1
         print("\n--Estadisticas--")
         print("Consultas:", consultas)
         print("Vacunas:", vacunas)
+        print("Cirugias: ", cirugias)
+        print("Radiografias: ", radiografias)
         print("Otros:", otro)
     except FileNotFoundError:
         print("No hay estadisticas registradas en el sistema")
