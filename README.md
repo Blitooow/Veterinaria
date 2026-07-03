@@ -13,7 +13,7 @@ Integrantes:
 El sistema funciona como un operador para una veterinaria, en el cual se pueden registrar turnos para sus mascotas, historial de atenciones realizadas, etc. El sistema implementa una solucion para veterinarias que necesiten orden en sus registros de turnos, mascotas, etc. El programa funciona mejor para que lo usen los operarios de la veterinaria.
 
 ## Video demo del programa
-Link: 
+Link: https://drive.google.com/drive/folders/1RzZr15ZBvpUwYcowNUeLHY3QqA2nFsZ3?usp=sharing
 
 ## Instrucciones de ejecución
 1. Clonar este repositorio
