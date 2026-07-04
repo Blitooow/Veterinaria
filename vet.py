@@ -1,4 +1,5 @@
 #se definen todas las opciones en funciones
+
 #en esta parte se registran las macotas y se leen
 def registrar_mascota():
     nombre = input("Nombre de su mascota: ")
